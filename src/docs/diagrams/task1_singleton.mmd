@@ -1,0 +1,10 @@
+classDiagram
+    class FlightControlCenter {
+        <<Singleton>>
+        - static FlightControlCenter instance
+        - Map~String, String~ runwayStatuses
+        - FlightControlCenter()
+        + static synchronized FlightControlCenter getInstance()
+        + boolean bookRunway(String runwayName, String flightNumber)
+        + void printRunwayStatuses()
+    }
