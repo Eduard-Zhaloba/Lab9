@@ -1,0 +1,30 @@
+classDiagram
+    class Cloneable {
+        <<interface>>
+    }
+
+    class Flight {
+        <<Prototype>>
+        - String flightNumber
+        - String destination
+        - String date
+        - String airplaneType
+        - List~Passenger~ passengers
+        - List~String~ blockedSeats
+        + Flight(String destination, String airplaneType)
+        + Flight clone()
+        + void setFlightNumber(String flightNumber)
+        + void setDate(String date)
+    }
+
+    class Passenger {
+        <<Prototype>>
+        - String name
+        - String passportNumber
+        + Passenger(String name, String passportNumber)
+        + Passenger clone()
+    }
+
+    Cloneable <|.. Flight : realization
+    Cloneable <|.. Passenger : realization
+    Flight o-- Passenger : passengers (1 to 0..*)
